@@ -1,2 +1,4 @@
 /backend/node_modules
 /backend/.env
+/backend/MachineLearningModel/movies_metadata.csv
+/backend/MachineLearningModel/ratings_small.csv
