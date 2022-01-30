@@ -4,10 +4,6 @@ const readFileLines = (filename) =>
     fs.readFileSync(filename).toString("UTF8").split("\n");
 
 let arr = readFileLines("MachineLearningModel/rules.txt");
-console.log(arr[0]);
-console.log(arr[1]);
-
-
 //To make array of objects
 var arr_obj = [];
 var len = arr.length;
@@ -16,9 +12,10 @@ for (var m = 0; m < len; m++) {
     // To extract FirstMovie
     let temp;
     for(let i=2; i<arr[m].length-1; i++) {
-        if(arr[m][i+1]===`,`)
+        if(arr[m].substr(i,4)===`', '`||arr[m].substr(i,4)===`', "`||arr[m].substr(i,4)===`", '`||arr[m].substr(i,4)===`", "`)
         {
             temp=i;
+            // console.log(i);
             break;
         }
     }
@@ -26,9 +23,10 @@ for (var m = 0; m < len; m++) {
     // To extract SecondMovie
     let temp2;
     for(let i=temp+1; i<arr[m].length-1; i++) {
-        if(arr[m][i+1]===`,`)
+        if(arr[m].substr(i,3)===`', `||arr[m].substr(i,3)===`", `)
         {
             temp2=i;
+            // console.log(i);
             break;
         }
     }
@@ -42,5 +40,5 @@ for (var m = 0; m < len; m++) {
         lift: obj.lift
     });
 }
-// console.log(arr_obj);
+console.log(arr_obj);
 module.exports = arr_obj;
