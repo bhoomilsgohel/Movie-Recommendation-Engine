@@ -53,7 +53,7 @@ for i in range(0, len(newDf)):
     if len(temp) > 0:
         finalDf.append(temp)
 
-rules = apriori(transactions=finalDf, min_support=0.03,
+rules = apriori(transactions=finalDf, min_support=0.02,
                 min_confidence=0.2, min_lift=3, min_length=2, max_length=2)
 results = list(rules)
 
@@ -75,18 +75,24 @@ def Sort_Tuple(tup):
 
 tempArrSorted = Sort_Tuple(tempArr)
 tempArrSorted.reverse()
+print(len(tempArrSorted))
+_file = open("backend/MachineLearningModel/rules.txt", "w")
+
+for i in range(0, len(tempArrSorted)):
+    _file.write(str(tempArrSorted[i]))
+    _file.write("\n")
+
+_file.close()
+# def getResults(movie, limit):
+#     res = []
+#     ct = 0
+#     for i in tempArrSorted:
+#         if(i[0] == movie):
+#             res.append(i)
+#             ct += 1
+#         if(ct == limit):
+#             break
+#     return res
 
 
-def getResults(movie, limit):
-    res = []
-    ct = 0
-    for i in tempArrSorted:
-        if(i[0] == movie):
-            res.append(i)
-            ct += 1
-        if(ct == limit):
-            break
-    return res
-
-
-print(getResults('Rocky III', 5))
+# print(getResults('Rocky III', 5))
