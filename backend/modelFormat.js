@@ -40,5 +40,11 @@ for (var m = 0; m < len; m++) {
         lift: obj.lift
     });
 }
-console.log(arr_obj);
-module.exports = arr_obj;
+// console.log(arr_obj);
+const moviesList = arr_obj.map((movie) => movie.FirstMovie);
+const uniqueMoviesList = [...new Set(moviesList)];
+console.log(uniqueMoviesList)
+module.exports = {
+    uniqueMoviesList,
+    arr_obj
+};
